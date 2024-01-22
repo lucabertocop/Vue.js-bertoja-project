@@ -1,0 +1,27 @@
+{
+    "resource": {
+        "name": "Bagno 1°piano",
+        "questions": [
+            {
+                "id": 1,
+                "type": "PROVINCE",
+                "text": "In quale provincia risiedi?"
+            },
+            {
+                "id": 2,
+                "type": "5_STARS",
+                "text": "Come valuti l’esperienza?"
+            },
+            {
+                "id": 3,
+                "type": "3_FACES",
+                "text": "Come hai trovato il personale?"
+            },
+            {
+                "id": 4,
+                "type": "3_FACES",
+                "text": "Come hai trovato il personale?"
+            }
+        ]
+    }
+}
