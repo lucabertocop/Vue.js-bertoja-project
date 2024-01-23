@@ -1,77 +1,83 @@
 <template>
-  <div class="container">
-    <div class="centered-div">
-      <div class="survey-point-edit">
-        <div class="mini-container"> 
-        <UserInfos msg="Pinco Pallino 👤" />
-      </div>
-        <h2>Surveys List</h2>
-        <el-card shadow="hover" v-for="pair in idTextPairs" :key="pair.id"
-          :class="{ 'selected-card': selectedCard === pair.id }" @click.native="selectCard(pair.id)">
-          <span>{{ pair.text }}</span>
-        </el-card>
-        <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/question/new" class="fab-link">
-          <fab :position="position" :bg-color="bgColor" class="fab-button"></fab>
-        </router-link>
+  <div class = "container ">
+  <div class="surveypointadd">
+    <h1>Edit survey ID{{ $route.params.id }}</h1>
+    <div class="input">
+      <div class="centered-input">
+        <el-input placeholder="Input question text" v-model="input" clearable>
+        </el-input>
+        <el-card shadow="hover" v-for="pair in idTextPairs" :key="pair.type"
+          :class="{ 'selected-card': selectedCard === pair.type }" @click.native="selectCard(pair.type)">
+          <span>{{ pair.emoji }} {{ pair.type }}</span> </el-card>
       </div>
     </div>
+    </div>
+    <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/edit/" class="fab-link">
+      <fab :position="'bottom-left'" :main-icon="'arrow_back'" :bg-color="bgColor" class="fab-button-back"></fab>
+    </router-link>
+    <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/edit/" class="fab-link2">
+      <fab :position="position" :main-icon="'check'" :bg-color="bgColor" class="fab-button-check" @click.native="editData(id)"></fab>
+    </router-link>
   </div>
 </template>
 
 <script>
-import jsonData from '@/simulate-api/get-surveys.json';
-import UserInfos from '@/components/UserInfos.vue';
 import fab from 'vue-fab';
+import jsonData from '@/simulate-api/types.json';
+import jsonData2 from '@/simulate-api/get-surveys.json';
 
 export default {
-  name: 'survey-point-edit',
+  name: 'survey-point-add',
   components: {
-    UserInfos,
     fab
   },
   data() {
     return {
       idTextPairs: [],
       selectedCard: null,
+      input: '',
       bgColor: '#778899',
-      position: 'bottom-right'
-
+      position: 'bottom-right',
     }
   },
-  methods: {
-    add() {
-      alert('Clicked on alert icon');
-    },
-    selectCard(cardId) {
-      this.selectedCard = cardId;
-      console.log(this.selectedCard)
-    },
-  },
   mounted() {
+    this.id = this.$route.params.id
     this.idTextPairs = jsonData.resource.questions.map(question => ({
-      id: question.id,
-      text: question.text
+      type: question.type,
+      emoji: question.emoji
     }));
+  },
+  methods: {
+    selectCard(cardType) {
+      this.selectedCard = cardType;
+    },
+    editData(id) {
+      id = (id.replace(":","") )-1 
+      jsonData2.resource.questions[id].type = this.selectedCard;
+      jsonData2.resource.questions[id].text = this.input;
+    }
   }
 };
 </script>
 
 <style>
-.mini-container {
-  display: inline-block;
+.input {
+  display: flex-start;
   justify-content: center;
-  align-items: flex-start;
-  height: auto;
-  border: 1px solid #000; 
-  padding: 20px; 
+  align-items: center;
+  width: 10;
+  border: 2px;
 }
+
+.centered-input {
+  text-align: center;
+}
+
 .container {
-  display: inline-block;
   justify-content: center;
   align-items: flex-start;
   height: auto;
-  border: 2px solid #000; 
-  padding: 20px;
+  width: auto;
 }
 
 .centered-div {
@@ -106,7 +112,7 @@ export default {
 .bg-purple-light {
   background: #e5e9f2;
 }
-
+                                                                                           
 .grid-content {
   border-radius: 4px;
   min-height: 36px;

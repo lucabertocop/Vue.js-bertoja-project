@@ -7,10 +7,12 @@
         <UserInfos msg="Pinco Pallino 👤" />
       </div>
         <h2>Surveys List</h2>
-        <el-card shadow="hover" v-for="pair in idTextPairs" :key="pair.id"
+        <router-link :to="editLink" class="fab-link1">
+          <el-card shadow="hover" v-for="pair in idTextPairs" :key="pair.id"
           :class="{ 'selected-card': selectedCard === pair.id }" @click.native="editCard(pair.id)">
           <span>{{ pair.text }}</span>
         </el-card>
+      </router-link>
         <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/question/new" class="fab-link">
           <fab :position="position" :bg-color="bgColor" class="fab-button"></fab>
         </router-link>
@@ -40,6 +42,12 @@ export default {
 
     }
   },
+  computed: {
+    editLink() {
+      // Construct the dynamic route for the edit link
+      return `/work-area/<work-area-id>/survey-point/<survey-point-id>/question/:${this.selectedCard}/edit`;
+    }
+  },
   methods: {
     add() {
       alert('Clicked on alert icon');
@@ -60,10 +68,16 @@ export default {
 </script>
 
 <style>
-.fab-link{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  .fab-link1 {
+    text-decoration: none;
+  }
+.fab-link1{
+  display: inline-block;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  padding: 20px;
+  position: relative;
 }
 .fab-button{
   position: absolute;

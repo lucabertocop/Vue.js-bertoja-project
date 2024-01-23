@@ -3,9 +3,6 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/edit/">Edit</router-link> |
-      <!-- <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/question/<question-id>/edit">Question Edit</router-link> | -->
-      <!-- <router-link to="/work-area/<work-area-id>/survey-point/<survey-point-id>/question/new">Question Add</router-link> | -->
- 
     </nav>
     <router-view/>
   </div>

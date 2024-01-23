@@ -1,0 +1,18 @@
+{
+    "resource": {
+        "questions": [
+            {
+                "type": "PROVINCE",
+                "emoji": "🌍"
+            },
+            {
+                "type": "5_STARS",
+                "emoji": "⭐"
+            },
+            {
+                "type": "3_FACES",
+                "emoji": "😃"
+            }
+        ]
+    }
+}

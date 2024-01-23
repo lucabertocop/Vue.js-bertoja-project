@@ -16,7 +16,7 @@ const routes = [
     component: () => import('../views/SurveyPointEdit.vue')
   },
   {
-    path: '/work-area/<work-area-id>/survey-point/<survey-point-id>/question/<question-id>/edit',
+    path: '/work-area/<work-area-id>/survey-point/<survey-point-id>/question/:id/edit',
     name: 'survey-point-question-edit',
     component: () => import('../views/SurveyPointQuestionEdit.vue')
   },
