@@ -1,7 +1,7 @@
 <template>
   <div class = "container ">
   <div class="surveypointadd">
-    <h1>Edit survey ID{{ $route.params.id }}</h1>
+    <h1>Edit survey ID: {{ $route.params.id }}</h1>
     <div class="input">
       <div class="centered-input">
         <el-input placeholder="Input question text" v-model="input" clearable>
@@ -86,6 +86,7 @@ export default {
 
 .selected-card {
   background-color: green;
+  color: #FFF;
 }
 
 .el-row {

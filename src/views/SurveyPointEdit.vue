@@ -45,7 +45,7 @@ export default {
   computed: {
     editLink() {
       // Construct the dynamic route for the edit link
-      return `/work-area/<work-area-id>/survey-point/<survey-point-id>/question/:${this.selectedCard}/edit`;
+      return `/work-area/<work-area-id>/survey-point/<survey-point-id>/question/${this.selectedCard}/edit`;
     }
   },
   methods: {

@@ -93,6 +93,7 @@ export default {
 
 .selected-card {
   background-color: green;
+  color: #FFF;
 }
 
 .el-row {
